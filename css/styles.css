@@ -1,0 +1,41 @@
+main{
+    display: flex;
+}
+
+.card-producto img{
+    width: 50px;
+    height: 50px;
+}
+
+.card-producto{
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contenedorProductos{
+    height: 600px;
+    border: 2px solid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#contenedorCarrito{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contenedorCarrito li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+}
