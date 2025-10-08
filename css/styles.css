@@ -68,7 +68,7 @@ div button {
     max-width: 80%;
     display: flex;
     gap: 5px;
-    border: 2px solid;
+    /* border: 2px solid; */
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
