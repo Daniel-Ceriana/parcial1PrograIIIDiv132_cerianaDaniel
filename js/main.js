@@ -23,6 +23,8 @@ const nombreApellido = document.querySelector('#nombreApellido');
 const ordNombre = document.querySelector('#ordNombre');
 const ordPrecio = document.querySelector('#ordPrecio');
 
+const contadorCarrito = document.querySelector('#contadorCarrito')
+
 //Mis datos
 //const porque son cosas que no van a cambiar
 const alumno = {
@@ -71,7 +73,9 @@ function mostrarCarrito() {
     if (carrito.length == 0) {
         contenedorCarrito.innerHTML = "";
     } else {
-        let cartaCarrito = "<ul>";
+        let cartaCarrito = `
+        <h3>Carrito</h3>    
+        <ul>`;
         carrito.forEach((item, indice) => {
             cartaCarrito +=
                 `<li class="bloque-item">
@@ -80,12 +84,22 @@ function mostrarCarrito() {
             </li>`
 
         });
-        cartaCarrito += "</ul><button onclick='vaciarCarrito()'> Vaciar carrito </button>";
+        cartaCarrito += `</ul>
+        <section class="abajoCarrito">        
+        <button onclick='vaciarCarrito()'> Vaciar carrito </button>
+        <p>Total:${carrito.reduce((total,a)=>total + a.precio,0)}</p>
+        </section>
+`;      //Arriba use un reduce para calcular el total deprecio en el carrito. 
+//Se va actualizando cada vez que se llama a esta funcion, por lo que siempre tiene el precio actualizado
+        //actualiza lo que se ve del carrito
         contenedorCarrito.innerHTML = cartaCarrito;
+
         console.log(carrito);
     }
 
-
+    //actualiza el nav con la cantidad de productos
+    contadorCarrito.textContent = `Carrito: ${carrito.length} Productos`
+    //se muestra si o si, por lo que esta afuera del if
 }
 
 //#region localStorage y carrito
@@ -97,8 +111,8 @@ function mostrarCarrito() {
 
 function agregarACarrito(id) {
     let itemSeleccionado = productos.find(f => f.id === id);
-        carrito.push(itemSeleccionado);
-    
+    carrito.push(itemSeleccionado);
+
     actualizarLocalStorage();
     mostrarCarrito();
 }
@@ -151,30 +165,34 @@ init();
 
 //Ejercicio 8
 
-ordNombre.addEventListener('click',ordenarNombre);
-ordPrecio.addEventListener('click',ordenarPrecio);
+ordNombre.addEventListener('click', ordenarNombre);
+ordPrecio.addEventListener('click', ordenarPrecio);
 
-function ordenarNombre(){
+function ordenarNombre() {
     //use function en vez de flecha por comodidad, iban a ser varias lineas
-    productos.sort(function (a, b){
+    productos.sort(function (a, b) {
         //a, b se refieren a dos items distintos que va a ir comparando
         //los paso a lowerCase en caso de que alguno tenga mayus
         //despues comparo cual es mas grande y segun eso cambio el return
-        if(a.nombre.toLowerCase()<b.nombre.toLowerCase()){;
-            return -1;}
-        if(a.nombre.toLowerCase()>b.nombre.toLowerCase()){;
-            return 1;}
-            //si son iguales el orden se queda como esta
+        if (a.nombre.toLowerCase() < b.nombre.toLowerCase()) {
+            ;
+            return -1;
+        }
+        if (a.nombre.toLowerCase() > b.nombre.toLowerCase()) {
+            ;
+            return 1;
+        }
+        //si son iguales el orden se queda como esta
         return 0;
     });
     //actualiza lo que se muestra
     mostrarProductos(productos);
 }
-function ordenarPrecio(){
+function ordenarPrecio() {
     //si la resta da positivo, lo toma como el 1 de arriba
     //negativo como el -1
     //y si es 0, 0
-    productos.sort((a,b)=> {return a.precio - b.precio});
+    productos.sort((a, b) => { return a.precio - b.precio });
     mostrarProductos(productos);
 }
 

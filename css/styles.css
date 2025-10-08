@@ -1,36 +1,93 @@
 main{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    padding-left: 10px;
+    padding-right: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #38a54c;
+    color: #fffced;
+}
+
+.busqueda{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.seccionProductos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+div button {
+    height: 35px;
+    background-color: #38a54c;
+    color: #fffced;
+    border: 2px;
+    border-radius: 10px;
 }
 
 .card-producto img{
-    width: 50px;
-    height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+}
+.card-producto button{
+    height: 35px;
+    background-color: #38a54c;
+    color: #fffced;
+    border: 2px;
+    border-radius: 10px;
 }
 
 .card-producto{
     width: 200px;
-    height: 200px;
+    height: 220px;
     padding: 5px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 }
 
 #contenedorProductos{
-    height: 600px;
-    border: 2px solid;
+    /* height: 600px; */
+    max-width: 80%;
     display: flex;
+    gap: 5px;
+    border: 2px solid;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
 #contenedorCarrito{
-    width: 50%;
-    margin: auto;
+    width: 100%;
+    /* margin: auto; */
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* border: 2px solid; */
+
+}
+#contenedorCarrito button{
+    background-color: #f90022;
+    height: 35px;
+    color: #fffced;
+    border: 2px;
+    border-radius: 10px;
 }
 
 #contenedorCarrito li{
@@ -38,4 +95,15 @@ main{
     justify-content: space-between;
     align-items: center;
     width: 300px;
+}
+
+.abajoCarrito{
+    /* padding-left: 10px;
+    padding-right: 10px; */
+
+    width: 98%;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    /* border: 2px solid; */
 }
